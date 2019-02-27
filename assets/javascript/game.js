@@ -1,9 +1,10 @@
-const wordBank = ["Awkward", "Bagpipes", "Banjo", "Bungler", "Croquet", "Crypt", "Dwarves", "Fervid", "Fishhook", "Fjord", "Gazebo", "Gypsy", "Haiku", "Hphazard", "Hyphen", "Ivory", "Jazzy", "Jiffy", "Jinx", "Jukebox", "Kayak", "Kiosk", "Klutz", "Memento", "Mystify", "Numbskull", "Ostracize", "Oxygen", "Pajama", "Phlegm", "Pixel", "Polka", "Quad", "Quip", "Rhythmic", "Rogue", "Sphinx", "Squawk", "Swivel", "Toady", "Twelfth", "Unzip", "Waxy", "Wildebeest", "Yacht", "Zealous", "Zigzag", "Zippy", "Zombie"];
-const maxGuess = 10;
-let guessCounter = 0;
-let lettersGuessed = [];
 let scoreCorrect = 0;
 let scoreWrong = 0;
+
+// These will all be internal variables 
+const wordBank = ["Awkward", "Bagpipes", "Banjo", "Bungler", "Croquet", "Crypt", "Dwarves", "Fervid", "Fishhook", "Fjord", "Gazebo", "Gypsy", "Haiku", "Hphazard", "Hyphen", "Ivory", "Jazzy", "Jiffy", "Jinx", "Jukebox", "Kayak", "Kiosk", "Klutz", "Memento", "Mystify", "Numbskull", "Ostracize", "Oxygen", "Pajama", "Phlegm", "Pixel", "Polka", "Quad", "Quip", "Rhythmic", "Rogue", "Sphinx", "Squawk", "Swivel", "Toady", "Twelfth", "Unzip", "Waxy", "Wildebeest", "Yacht", "Zealous", "Zigzag", "Zippy", "Zombie"];
+let guessCounter = 0;
+let lettersGuessed = [];
 
 // Change image based on a number (which will come from guess number)
 function setImage(num) {
@@ -18,10 +19,10 @@ function setImage(num) {
     img.style.height = `${height}` + "px";
 }
 
-// Change number of guesses based on maxGuess and guessCounter
+// Change number of guesses based guessCounter
 function setGuesses(num) {
     const counter = document.getElementById("guesses_remaining");
-    counter.innerHTML = maxGuess - num;
+    counter.innerHTML = 10 - num;
     if (num >= 7) {
         counter.style.color = "red";
     } else {
@@ -72,6 +73,7 @@ function indices(array, element) {
     }
     return indxs
 }
+
 // Display correctly guessed letters
 function updateLetters(word, guessed) {
     const blanks = document.getElementById("word_progress");
@@ -89,6 +91,9 @@ function updateLetters(word, guessed) {
     });
 
     blanks.innerHTML = underscores.join("");
+    if (underscores.join("") === word) {
+        // win() Need to define a function for this!
+    }
 }
 
 // Initialize a new game
