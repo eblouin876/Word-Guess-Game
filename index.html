@@ -4,15 +4,122 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Word Guess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
 
+    <!-- Main body -->
+    <div class="container">
+        <!-- Title Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="jumbotron">
+                    <h1>
+                        My Happy Title
+                    </h1>
+                </div>
+            </div>
+        </div>
 
+        <!-- Game body -->
+        <div class="row">
+            <!-- Left side container for hangman-->
+            <div class="col-6" id="hangman_box">
+                <img src="assets/images/hangman/0.jpg" alt="Hangman" class="mx-auto d-block" id="hangman_img" />
+            </div>
+
+            <!-- Right side container -->
+            <div class="col-6" id="right_container">
+                <div class="row">
+                    <!-- Column for start instructions then score -->
+                    <div class="col-12">
+                        <!-- The instructions that will show on load (no d-none class @ load) -->
+                        <div class="row justify-content-center" id="instructions">
+                            <div class="col">
+                                <h2 class="text-center full_line">
+                                    Welcome to Hangman!
+                                </h2>
+                                <h3 class="text-center full_line">
+                                    Press any letter to begin!
+                                </h3>
+                            </div>
+                        </div>
+                        <!-- The scoreboard that will only show after game start -->
+                        <div class="row d-none justify-content-center" id="scoreboard">
+                            <h3 class="text-center full_line" id="score_correct">
+
+                            </h3>
+                            <h3 class="text-center full_line" id="score_wrong">
+
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Column for guesses remaining, letters guessed, and current progress -->
+                    <div class="col-12" id="word_box">
+
+                        <div class="row justify-content-center active_row">
+                            <div class="col-12">
+                                <h3 class="text-center" id="word_progress">
+                                    _ _ _ _ _ _ _ _ _
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center active_row">
+                            <div class="col-12">
+                                <h3 class="text-center">
+                                    Guesses remaining
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center active_row">
+                            <div class="col-12">
+                                <h4 class="text-center" id="guesses_remaining">
+                                    10
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center active_row">
+                            <div class="col-12">
+                                <h3 class="text-center">
+                                    Letters Guessed
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center active_row">
+                            <div class="col-12">
+                                <h4 class="text-center text-uppercase" id="letters_guessed">
+                                    Letters
+                                </h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
