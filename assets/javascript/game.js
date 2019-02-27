@@ -9,6 +9,7 @@ class Hangman {
         this.word = "";
         this.scoreCorrect = 0;
         this.scoreWrong = 0;
+        this.newGame()
     }
 
     // Change image based on a number (which will come from guess number)
@@ -121,12 +122,18 @@ class Hangman {
 
     // Check for win or loss
     checkCondition() {
-        if (document.getElementById("word_progress").textContent === this.word) {
+        if (document.getElementById("word_progress").textContent.replace(/ /g, '') === this.word) {
+            this.scoreCorrect += 1;
             // Yay you win! Display fun things!
+
+            this.newGame()
         }
 
         if (this.guessCounter === 10) {
+            this.scoreWrong += 1;
             // Sorry, you lose! Display sad things!
+
+            this.newGame()
         }
     }
 
