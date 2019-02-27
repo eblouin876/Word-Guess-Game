@@ -151,7 +151,9 @@ class Hangman {
     }
 }
 
-// document.onkeyup = function (event) {
-//     hangman = 
-//     .textContent = event.key.toUpperCase();
-// }
+document.onkeyup = function (event) {
+    hangman = new Hangman()
+    document.onkeyup = function (event) {
+        hangman.guess(event.key.toUpperCase())
+    }
+}
