@@ -1,7 +1,3 @@
-let scoreCorrect = 0;
-let scoreWrong = 0;
-
-
 class Hangman {
 
     constructor(correct = 0, wrong = 0) {
@@ -11,16 +7,18 @@ class Hangman {
         this.lettersGuessed = [];
         this.gamesPlayed = correct + wrong;
         this.word = "";
+        this.scoreCorrect = 0;
+        this.scoreWrong = 0;
     }
 
     // Change image based on a number (which will come from guess number)
     updateImage(num) {
         const img = document.getElementById("hangman_img");
         if (num >= 0 && num <= 10) {
-            img.src = `assets/images/hangman/${num}.jpg`
+            img.src = `assets/images/hangman/${num}.jpg`;
 
         } else {
-            img.src = "assets/images/hangman/0.jpg"
+            img.src = "assets/images/hangman/0.jpg";
         }
         const height = parseInt(document.getElementById("right_container").clientHeight);
         img.style.height = `${height}` + "px";
@@ -64,19 +62,15 @@ class Hangman {
 
     }
 
-    // Random Integer Generator
-    getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
     // Get all indices of letter in word
     indx(word, element) {
-        let indxs = []
-        var idx = word.indexOf(element);
-        do {
+        let indxs = [];
+        let idx = word.indexOf(element);
+        indxs.push(idx);
+        while (idx != -1) {
             indxs.push(idx);
             idx = word.indexOf(element, idx + 1);
-        } while (idx != -1)
+        }
         return indxs
     }
 
@@ -85,39 +79,60 @@ class Hangman {
         const blanks = document.getElementById("word_progress");
         let underscores = [];
         for (let i = 0; i < word.length; i++) {
-            underscores.push("__ ")
+            underscores.push("__")
         }
-        guessed.forEach(function (letter) {
-            let positions = this.indx(word, letter);
+
+        for (let x = 0; x < guessed.length; x++) {
+            let positions = this.indx(word, guessed[x]);
             for (let j = 0; j < positions.length; j++) {
                 if (positions[j] !== -1) {
-                    underscores[positions[j]] = letter.toUpperCase()
-                } else {
-                    this.guessCounter += 1
+                    underscores[positions[j]] = guessed[x].toUpperCase()
                 }
             }
-        });
+        };
 
-        blanks.innerHTML = underscores.join("");
-        if (underscores.join("") === word) {
-            // win() Need to define a function for this!
+        blanks.innerHTML = underscores.join(" ");
+
+        this.checkCondition()
+    }
+
+    // Update guess counter
+    updateGuessCounter() {
+        let currentCount = 0;
+        for (let i = 0; i < this.lettersGuessed.length; i++) {
+            if (this.word.indexOf(this.lettersGuessed[i]) === -1) {
+                currentCount += 1
+            }
         }
+        this.guessCounter = currentCount;
     }
 
     // function that runs on click
     guess(letter) {
         if (this.lettersGuessed.indexOf(letter) === -1) {
-            this.lettersGuessed.push(letter)
-            this.updateLetters(this.word, this.lettersGuessed)
-            this.updateGuessed(this.lettersGuessed)
-            this.updateGuesses(this.guessCounter)
-            this.updateImage(this.guessCounterWrong)
+            this.lettersGuessed.push(letter);
+            this.updateGuessCounter();
+            this.updateGuessed(this.lettersGuessed);
+            this.updateGuesses(this.guessCounter);
+            this.updateImage(this.guessCounter);
+            this.updateLetters(this.word, this.lettersGuessed);
+        }
+    }
+
+    // Check for win or loss
+    checkCondition() {
+        if (document.getElementById("word_progress").textContent === this.word) {
+            // Yay you win! Display fun things!
+        }
+
+        if (this.guessCounter === 10) {
+            // Sorry, you lose! Display sad things!
         }
     }
 
     // Initialize a new game
     newGame() {
-        this.word = this.wordBank[this.getRndInteger(0, this.wordBank.length)];
+        this.word = this.wordBank[Math.floor(Math.random() * this.wordBank.length)].toUpperCase();
         this.lettersGuessed = [];
         this.guessCounter = 0;
         this.updateImage(this.guessCounter);
@@ -129,8 +144,7 @@ class Hangman {
     }
 }
 
-
-
-// document.onkeyup = function(event) {
-// .textContent = event.key;
+// document.onkeyup = function (event) {
+//     hangman = 
+//     .textContent = event.key.toUpperCase();
 // }
