@@ -11,7 +11,28 @@ class Hangman {
         this.scoreWrong = 0;
         this.lastGuess = "";
         this.newGame()
+        this.sound = {
+            src: "",
+            setup: function () {
+                this.song = document.createElement("audio");
+                this.song.setAttribute("preload", "auto");
+                this.song.setAttribute("controls", "none");
+                this.song.style.display = "none";
+                document.body.appendChild(this.song);
+                this.song.src = this.src;
+            },
+            play: function () {
+                this.song.src = this.src;
+                this.song.play()
+            },
+            stop: function () {
+                this.song.pause()
+            },
+
+        }
+        this.sound.setup()
     }
+
 
     // Change image based on a number (which will come from guess number)
     updateImage(num) {
@@ -137,7 +158,9 @@ class Hangman {
             mainTitle.classList.add("d-none");
             winLose.classList.remove("d-none");
             winLose.textContent = `Great job getting ${this.word.toLowerCase()}! Try your luck on this one!`
-            // Need some form of wait
+            // Play sound. Need to add the path
+            this.sound.src = ""
+            console.log(this.sound.play())
             this.newGame()
         }
 
@@ -147,7 +170,9 @@ class Hangman {
             mainTitle.classList.add("d-none");
             winLose.classList.remove("d-none");
             winLose.textContent = `Good try! Your word was ${this.word.toLowerCase()}. Better luck this time!`
-            // Need some form of wait here
+            // Play sound. Need to add the path
+            this.sound.src = ""
+            console.log(this.sound.play())
             this.newGame()
         }
     }
