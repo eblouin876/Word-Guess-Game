@@ -5,20 +5,25 @@
 
 body {
     background-color: black;
-    color: white;
+}
+
+.container {
+    background-color: #8ee4af;
+    color: #05386b;
+    height: 100vh;
 }
 
 
 #win_lose_text {
-    color: pink;
+    color: #05386b;
 }
 
 #win_lose {
-    background-color: blue;
+    background-color: #5cdb95;
 }
 
 #main_title {
-    background-color: maroon;
+    background-color: #5cdb95;
 }
 
 /* Hangman box mods */
