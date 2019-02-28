@@ -18,9 +18,7 @@
 /* Instructions and scoreboard mods */
 #instructions,
 #scoreboard {
-    border: 1px dashed purple;
     margin: 0 0 2rem;
-    background-color: green;
     width: 100%;
 }
 
@@ -28,8 +26,6 @@
 
 /* Current words mods */
 .active_row {
-    background-color: purple;
-    border: 1px dashed green;
     width: 100%;
     margin: 0 0 .5rem;
 }

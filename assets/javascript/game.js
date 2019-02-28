@@ -122,26 +122,34 @@ class Hangman {
 
     // Check for win or loss
     checkCondition() {
+        const mainTitle = document.getElementById("main_title");
+        const winLose = document.getElementById("win_lose");
         if (document.getElementById("word_progress").textContent.replace(/ /g, '') === this.word) {
             this.scoreCorrect += 1;
             // Yay you win! Display fun things!
-
+            mainTitle.classList.add("d-none");
+            winLose.classList.remove("d-none");
             this.newGame()
         }
 
         if (this.guessCounter === 10) {
             this.scoreWrong += 1;
             // Sorry, you lose! Display sad things!
-
+            mainTitle.classList.add("d-none");
+            winLose.classList.remove("d-none");
             this.newGame()
         }
     }
 
     // Initialize a new game
     newGame() {
+        const mainTitle = document.getElementById("main_title");
+        const winLose = document.getElementById("win_lose");
         this.word = this.wordBank[Math.floor(Math.random() * this.wordBank.length)].toUpperCase();
         this.lettersGuessed = [];
         this.guessCounter = 0;
+        mainTitle.classList.remove("d-none");
+        winLose.classList.add("d-none");
         this.updateImage(this.guessCounter);
         this.updateGuessed(this.lettersGuessed);
         this.updateGuesses(this.guessCounter);
