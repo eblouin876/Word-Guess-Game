@@ -3,6 +3,12 @@
 ## Description
 This is a basic hangman word guess game that is an assignment for the coding bootcamp I am working on.  
 
+## Languages and Frameworks Used
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+
 ## Instructions
 To start the game, press any key. To guess letters, type that letter on the keyboard. Only letter keys will be registered once the game has begun.
 
