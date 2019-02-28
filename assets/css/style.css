@@ -6,9 +6,16 @@
 body {
     background-color: black;
     color: white;
-
 }
 
+
+#win_lose_text {
+    color: pink;
+}
+
+#win_lose {
+    background-color: blue;
+}
 
 #main_title {
     background-color: maroon;

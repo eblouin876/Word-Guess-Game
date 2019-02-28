@@ -150,6 +150,7 @@ class Hangman {
     checkCondition() {
         const mainTitle = document.getElementById("main_title");
         const winLose = document.getElementById("win_lose");
+        const winLoseText = document.getElementById("win_lose_text");
 
 
         if (document.getElementById("word_progress").textContent.replace(/ /g, '') === this.word) {
@@ -157,10 +158,10 @@ class Hangman {
             // Yay you win! Display fun things!
             mainTitle.classList.add("d-none");
             winLose.classList.remove("d-none");
-            winLose.textContent = `Great job getting ${this.word.toLowerCase()}! Try your luck on this one!`
+            winLoseText.textContent = `Great job getting ${this.word.toLowerCase()}! Try your luck on this one!`
             // Play sound. Need to add the path
-            this.sound.src = ""
-            console.log(this.sound.play())
+            this.sound.src = "assets/audio/win.wav"
+            this.sound.play()
             this.newGame()
         }
 
@@ -169,10 +170,10 @@ class Hangman {
             // Sorry, you lose! Display sad things!
             mainTitle.classList.add("d-none");
             winLose.classList.remove("d-none");
-            winLose.textContent = `Good try! Your word was ${this.word.toLowerCase()}. Better luck this time!`
+            winLoseText.textContent = `Good try! Your word was ${this.word.toLowerCase()}. Better luck this time!`
             // Play sound. Need to add the path
-            this.sound.src = ""
-            console.log(this.sound.play())
+            this.sound.src = "assets/audio/lose.wav"
+            this.sound.play()
             this.newGame()
         }
     }
