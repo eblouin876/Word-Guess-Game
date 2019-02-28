@@ -3,7 +3,16 @@
     width: 100%;
 }
 
+body {
+    background-color: black;
+    color: white;
 
+}
+
+
+#main_title {
+    background-color: maroon;
+}
 
 /* Hangman box mods */
 #hangman_box {}

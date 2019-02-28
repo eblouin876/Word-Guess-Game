@@ -9,6 +9,7 @@ class Hangman {
         this.word = "";
         this.scoreCorrect = 0;
         this.scoreWrong = 0;
+        this.lastGuess = "";
         this.newGame()
     }
 
@@ -110,13 +111,17 @@ class Hangman {
 
     // function that runs on click
     guess(letter) {
-        if (this.lettersGuessed.indexOf(letter) === -1) {
-            this.lettersGuessed.push(letter);
-            this.updateGuessCounter();
-            this.updateGuessed(this.lettersGuessed);
-            this.updateGuesses(this.guessCounter);
-            this.updateImage(this.guessCounter);
-            this.updateLetters(this.word, this.lettersGuessed);
+        var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        if (alpha.indexOf(letter) !== -1) {
+            if (this.lettersGuessed.indexOf(letter) === -1) {
+                this.lastGuess = letter;
+                this.lettersGuessed.push(letter);
+                this.updateGuessCounter();
+                this.updateGuessed(this.lettersGuessed);
+                this.updateGuesses(this.guessCounter);
+                this.updateImage(this.guessCounter);
+                this.updateLetters(this.word, this.lettersGuessed);
+            }
         }
     }
 
@@ -124,32 +129,34 @@ class Hangman {
     checkCondition() {
         const mainTitle = document.getElementById("main_title");
         const winLose = document.getElementById("win_lose");
+
+
         if (document.getElementById("word_progress").textContent.replace(/ /g, '') === this.word) {
             this.scoreCorrect += 1;
             // Yay you win! Display fun things!
             mainTitle.classList.add("d-none");
             winLose.classList.remove("d-none");
+            winLose.textContent = `Great job getting ${this.word.toLowerCase()}! Try your luck on this one!`
+            // Need some form of wait
             this.newGame()
         }
 
-        if (this.guessCounter === 10) {
+        if (this.guessCounter >= 10) {
             this.scoreWrong += 1;
             // Sorry, you lose! Display sad things!
             mainTitle.classList.add("d-none");
             winLose.classList.remove("d-none");
+            winLose.textContent = `Good try! Your word was ${this.word.toLowerCase()}. Better luck this time!`
+            // Need some form of wait here
             this.newGame()
         }
     }
 
     // Initialize a new game
     newGame() {
-        const mainTitle = document.getElementById("main_title");
-        const winLose = document.getElementById("win_lose");
         this.word = this.wordBank[Math.floor(Math.random() * this.wordBank.length)].toUpperCase();
         this.lettersGuessed = [];
         this.guessCounter = 0;
-        mainTitle.classList.remove("d-none");
-        winLose.classList.add("d-none");
         this.updateImage(this.guessCounter);
         this.updateGuessed(this.lettersGuessed);
         this.updateGuesses(this.guessCounter);
