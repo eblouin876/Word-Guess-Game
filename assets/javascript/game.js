@@ -50,7 +50,7 @@ class Hangman {
     // Change number of guesses based guessCounter
     updateGuesses(num) {
         const counter = document.getElementById("guesses_remaining");
-        counter.innerHTML = 10 - num;
+        counter.textContent = 10 - num;
         if (num >= 7) {
             counter.style.color = "red";
         } else {
@@ -62,9 +62,9 @@ class Hangman {
     updateGuessed(letters) {
         const guessed = document.getElementById("letters_guessed");
         if (letters.length === 0) {
-            guessed.innerHTML = "None";
+            guessed.textContent = "None";
         } else {
-            guessed.innerHTML = letters.join("  ");
+            guessed.textContent = letters.join("  ");
         }
     }
 
@@ -80,8 +80,8 @@ class Hangman {
     setScore(correct, wrong) {
         const correctScore = document.getElementById("score_correct");
         const wrongScore = document.getElementById("score_wrong");
-        correctScore.innerHTML = "Games won: " + correct;
-        wrongScore.innerHTML = "Games lost: " + wrong;
+        correctScore.textContent = "Games won: " + correct;
+        wrongScore.textContent = "Games lost: " + wrong;
 
     }
 
@@ -114,7 +114,7 @@ class Hangman {
             }
         };
 
-        blanks.innerHTML = underscores.join(" ");
+        blanks.textContent = underscores.join(" ");
 
         this.checkCondition()
     }
