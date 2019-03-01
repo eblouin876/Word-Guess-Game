@@ -22,7 +22,7 @@
                     <h1 class="full_line">
                         Welcome to the Hangman Challenge!
                     </h1>
-                    <h2>Push your vocabulary with some of the strangest looking words</h2>
+                    <h2 class="d-none d-md-block">Push your vocabulary with some of the strangest looking words</h2>
                 </div>
                 <div class="jumbotron d-none text-center" id="win_lose">
                     <h1 id="win_lose_text">
@@ -36,10 +36,50 @@
         <!-- Game body -->
         <div class="row">
             <!-- Left side container for hangman-->
-            <div class="col-6" id="hangman_box">
-                <img src="assets/images/hangman/0.jpg" alt="Hangman" class="mx-auto d-block" id="hangman_img" />
+            <div class="col-6 d-none d-md-block" id="hangman_box">
+                <img src="assets/images/hangman/0.jpg" alt="Hangman" class="mx-auto" id="hangman_img" />
             </div>
 
+            <div class="col-6 d-block d-md-none">
+                <button class="btn btn-dark full_line" onclick="hangman = new Hangman()">Start</button>
+                <div class="row justify-content-center">
+                    <div class="col-4 justify-content-center">
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('A')">A</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('D')">D</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('G')">G</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('J')">J</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('M')">M</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('P')">P</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('S')">S</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('V')">V</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('Y')">Y</button>
+
+                    </div>
+                    <div class="col-4 justify-content-center">
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('B')">B</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('E')">E</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('H')">H</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('K')">K</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('N')">N</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('Q')">Q</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('T')">T</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('W')">W</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('Z')">Z</button>
+
+                    </div>
+                    <div class="col-4 justify-content-center">
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('C')">C</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('F')">F</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('I')">I</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('L')">L</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('O')">O</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('R')">R</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('U')">U</button>
+                        <button type="button" class="btn btn-dark" onclick="hangman.guess('X')">X</button>
+                    </div>
+                </div>
+
+            </div>
             <!-- Right side container -->
             <div class="col-6" id="right_container">
                 <div class="row">
@@ -48,9 +88,12 @@
                         <!-- The instructions that will show on load (no d-none class @ load) -->
                         <div class="row justify-content-center" id="instructions">
                             <div class="col">
-                                <h3 class="text-center full_line">
+                                <h3 class="text-center full_line d-none d-md-block">
                                     Press any letter to begin!
                                 </h3>
+                                <h5 class="text-center full_line d-block d-md-none">
+                                    Press Start to begin!
+                                </h5>
                             </div>
                         </div>
                         <!-- The scoreboard that will only show after game start -->
@@ -78,7 +121,7 @@
 
                         <div class="row justify-content-center active_row">
                             <div class="col-12">
-                                <h3 class="text-center">
+                                <h3 class="text-center" id="guesses_remaining_title">
                                     Guesses remaining
                                 </h3>
                             </div>
@@ -93,7 +136,7 @@
 
                         <div class="row justify-content-center active_row">
                             <div class="col-12">
-                                <h3 class="text-center">
+                                <h3 class="text-center" id="letters_guessed_title">
                                     Letters Guessed
                                 </h3>
                             </div>

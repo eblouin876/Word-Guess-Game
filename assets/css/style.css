@@ -11,6 +11,7 @@ body {
     background-color: #8ee4af;
     color: #05386b;
     height: 100vh;
+    overflow: auto;
 }
 
 
@@ -33,6 +34,9 @@ body {
     width: auto;
 }
 
+button {
+    margin: .25rem;
+}
 
 
 /* Instructions and scoreboard mods */
@@ -52,4 +56,25 @@ body {
 
 #letters_guessed {
     font-size: 2rem;
+}
+
+
+@media screen and (max-width: 992px) {
+
+    #score_correct,
+    #score_wrong,
+    #guesses_remaining_title,
+    #letters_guessed_title {
+        font-size: 1.25rem;
+    }
+
+    #word_progress,
+    #letters_guessed,
+    #guesses_remaining {
+        font-size: 1rem;
+    }
+
+    #win_lose_text {
+        font-size: 1.5rem;
+    }
 }
