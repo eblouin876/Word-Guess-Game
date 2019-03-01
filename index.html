@@ -41,8 +41,10 @@
             </div>
 
             <div class="col-6 d-block d-md-none">
-                <button class="btn btn-dark full_line" onclick="hangman = new Hangman()">Start</button>
-                <div class="row justify-content-center">
+                <button class="btn btn-dark full_line" onclick="hangman = new Hangman(); $('#start_button').addClass('d-none')"
+                    id="start_button">Start</button>
+                <div class="
+                    row justify-content-center">
                     <div class="col-4 justify-content-center">
                         <button type="button" class="btn btn-dark" onclick="hangman.guess('A')">A</button>
                         <button type="button" class="btn btn-dark" onclick="hangman.guess('D')">D</button>
